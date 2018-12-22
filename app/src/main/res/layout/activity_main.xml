@@ -9,14 +9,14 @@
         tools:context=".MainActivity">
 
     <TextView
-            android:id="@+id/workStatus"
+            android:id="@+id/workStatusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:text="work status:"/>
 
     <Button
-            android:id="@+id/startSimpleWorker"
+            android:id="@+id/startSimpleWorkerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start work"/>
