@@ -21,4 +21,11 @@
             android:layout_height="wrap_content"
             android:text="Start work"/>
 
+    <Button
+            android:id="@+id/cancelSimpleWorkerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel work"/>
+
+
 </LinearLayout>
