@@ -16,8 +16,8 @@ class Simple2Worker(context : Context, params : WorkerParameters)
     }
 
     override fun doWork(): Result {
-        val number = inputData.getInt(EXTRA_NUMBER, 0)
-        val result = number + number
+        val number = inputData.getInt(EXTRA_RESULT, 0)
+        val result = number * 2
         SystemClock.sleep(5000)
         Log.d("Simple2Worker", "Simple2Worker finished: $result")
 

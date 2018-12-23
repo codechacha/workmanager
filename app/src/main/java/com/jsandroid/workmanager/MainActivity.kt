@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
             val simple2Request = OneTimeWorkRequest.Builder(Simple2Worker::class.java)
-                .setInputData(inputData)
                 .addTag(WORK_TAG)
                 .setConstraints(constraints)
                 .build()
@@ -53,23 +52,30 @@ class MainActivity : AppCompatActivity() {
             status.observe(this, Observer<WorkInfo> { info ->
                 val workFinished = info!!.state?.isFinished
                 val result = info?.outputData?.getInt(SimpleWorker.EXTRA_RESULT, 0)
-                workStatusText.text = when (info.state) {
-                    WorkInfo.State.RUNNING,
-                    WorkInfo.State.ENQUEUED -> {
-                        "work status: ${info.state}"
-                    }
-                    WorkInfo.State.CANCELLED -> {
-                        "work status: ${info.state}, finished: $workFinished"
-                    }
+                simpleWorkStatusText.text = when (info.state) {
                     WorkInfo.State.SUCCEEDED,
                     WorkInfo.State.FAILED-> {
                         "work status: ${info.state}, result: ${result}, finished: $workFinished"
                     }
                     else -> {
-                        "work status: running"
+                        "work status: ${info.state}, finished: $workFinished"
                     }
                 }
             })
+            val status2 = workManager.getWorkInfoByIdLiveData(simple2Request.id)
+            status2.observe(this, Observer { info ->
+                val result = info?.outputData?.getInt(SimpleWorker.EXTRA_RESULT, 0)
+                simpleWork2StatusText.text = when (info.state) {
+                    WorkInfo.State.SUCCEEDED,
+                    WorkInfo.State.FAILED-> {
+                        "work status: ${info.state}, result: $result"
+                    }
+                    else -> {
+                        "work status: ${info.state}"
+                    }
+                }
+            })
+
         }
 
         cancelSimpleWorkerBtn.setOnClickListener {

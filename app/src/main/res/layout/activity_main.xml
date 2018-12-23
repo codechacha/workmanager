@@ -9,7 +9,14 @@
         tools:context=".MainActivity">
 
     <TextView
-            android:id="@+id/workStatusText"
+            android:id="@+id/simpleWorkStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="work status:"/>
+
+    <TextView
+            android:id="@+id/simpleWork2StatusText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
